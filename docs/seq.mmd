@@ -1,0 +1,21 @@
+sequenceDiagram
+  actor U as Користувач
+  participant UI as index.html (UI)
+  participant APP as app.js
+  participant M as math.js
+  participant CH as chart.js (Canvas)
+  U->>UI: вибір набору 5/10/20, режиму, m
+  UI->>APP: setSet / setMode / change(m)
+  APP->>M: lagrangeWeights, polyfit (QR)
+  M-->>APP: ваги, коефіцієнти, ŷ, r, метрики
+  APP->>CH: autoView(spec) → вікно X/Y
+  APP->>CH: draw(spec, view)
+  CH-->>U: графік + залишки
+  U->>UI: ▶ Анімація
+  loop кожен кадр rAF
+    APP->>M: lagrangeEval / Horner для поточного кроку
+    APP->>CH: autoView → плавне оновлення вікна → draw
+  end
+  U->>CH: наведення миші
+  CH-->>APP: координати
+  APP-->>U: підказка (x, y, ŷ, r)

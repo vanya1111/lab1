@@ -1,0 +1,12 @@
+digraph G { graph [fontname="DejaVu Sans",dpi=130,nodesep=0.35,ranksep=0.35]; node [fontname="DejaVu Sans",fontsize=11,style=filled,fillcolor="#eef3f8"]; edge [fontname="DejaVu Sans",fontsize=10];
+ s [label="Початок",shape=oval,fillcolor="#d5e8d4"];
+ i [label="Ввід вузлів (xᵢ, yᵢ), i=0..n\nx — попарно різні",shape=parallelogram];
+ w [label="Для k=0..n: wₖ = 1 / Π(xₖ − xⱼ), j≠k",shape=box];
+ e [label="Ввід x",shape=parallelogram];
+ a [label="S = 0; k = 0",shape=box];
+ c [label="k ≤ n ?",shape=diamond,fillcolor="#fff2cc"];
+ p [label="P = wₖ; для j≠k: P = P·(x − xⱼ)",shape=box];
+ u [label="S = S + yₖ·P; k = k+1",shape=box];
+ o [label="Вивід p(x) = S",shape=parallelogram];
+ f [label="Кінець",shape=oval,fillcolor="#f8cecc"];
+ s->i->w->e->a->c; c->p [label="так"]; p->u; u->c; c->o [label="ні"]; o->f; }

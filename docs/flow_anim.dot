@@ -1,0 +1,10 @@
+digraph G { graph [fontname="DejaVu Sans",dpi=130,nodesep=0.35,ranksep=0.35]; node [fontname="DejaVu Sans",fontsize=11,style=filled,fillcolor="#eef3f8"]; edge [fontname="DejaVu Sans",fontsize=10];
+ s [label="Кадр requestAnimationFrame(now)",shape=oval,fillcolor="#d5e8d4"];
+ a [label="Побудова специфікації кадру:\nкриві, точки, залишки (залежно від режиму/анімації)",shape=box];
+ b [label="Автомасштаб: ymin = min(усіх y кривих, точок, відрізків),\nymax = max(...); відступ 8 %; x ∈ [x₀;xₙ] ± 4 %",shape=box];
+ c [label="Плавне наближення вікна: view += (target − view)·(1 − e^(−dt/110))",shape=box];
+ d [label="Малювання: сітка, осі, криві, залишки, вузли, легенда",shape=box];
+ e [label="Анімація триває\nабо вікно ще не збіглося?",shape=diamond,fillcolor="#fff2cc"];
+ f [label="Запит наступного кадру",shape=box];
+ g [label="Спокій (кадри не плануються)",shape=oval,fillcolor="#f8cecc"];
+ s->a->b->c->d->e; e->f [label="так"]; f->s; e->g [label="ні"]; }

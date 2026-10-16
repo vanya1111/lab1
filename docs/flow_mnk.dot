@@ -1,0 +1,13 @@
+digraph G { graph [fontname="DejaVu Sans",dpi=130,nodesep=0.35,ranksep=0.35]; node [fontname="DejaVu Sans",fontsize=11,style=filled,fillcolor="#eef3f8"]; edge [fontname="DejaVu Sans",fontsize=10];
+ s [label="Початок",shape=oval,fillcolor="#d5e8d4"];
+ i [label="Ввід {(xᵢ, yᵢ)}, степінь m\nm := min(m, n−1)",shape=parallelogram];
+ t [label="Нормалізація: tᵢ = (2xᵢ − (a+b)) / (b−a), t∈[−1;1]",shape=box];
+ A [label="Дизайн-матриця A: Aᵢⱼ = tᵢʲ, j=0..m",shape=box];
+ q [label="Для k=0..m: вектор Хаусхолдера v,\nA := HₖA, b := Hₖb  (QR-розклад)",shape=box];
+ b [label="Зворотний хід: R·c = Qᵀy",shape=box];
+ m [label="Перехід до коефіцієнтів при xʲ (розкриття (αx+β)ʲ)",shape=box];
+ r [label="ŷᵢ = Σ cⱼ tᵢʲ (Горнер);  rᵢ = yᵢ − ŷᵢ",shape=box];
+ k [label="SSE, RMSE, R², max|r|",shape=box];
+ o [label="Вивід c, ŷ, r, метрик",shape=parallelogram];
+ f [label="Кінець",shape=oval,fillcolor="#f8cecc"];
+ s->i->t->A->q->b->m->r->k->o->f; }
