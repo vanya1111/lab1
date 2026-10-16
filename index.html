@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ЛР №1 — Лагранж та МНК (варіант 10)</title>
+<style>
+:root{--bd:#cfd4da;--on:#1f77b4}
+*{box-sizing:border-box}body{margin:0;font:14px system-ui,sans-serif;background:#f4f6f8;color:#1b1f24}
+header{padding:10px 18px;background:#1f3a5f;color:#fff}header h1{margin:0;font-size:17px}header small{opacity:.8}
+.wrap{max-width:1250px;margin:0 auto;padding:12px}
+.bar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;background:#fff;border:1px solid var(--bd);border-radius:8px;padding:8px 12px;margin-bottom:10px}
+.grp{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.grp>b{font-weight:600;color:#445}
+button{font:inherit;padding:5px 11px;border:1px solid var(--bd);border-radius:6px;background:#fff;cursor:pointer}
+button:hover{background:#eef3f8}button.on{background:var(--on);color:#fff;border-color:var(--on)}
+.canv{background:#fff;border:1px solid var(--bd);border-radius:8px;padding:6px;margin-bottom:10px}
+#cv{width:100%;height:min(54vh,470px);display:block}#rcv{width:100%;height:190px;display:block;margin-top:4px}
+#grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}#grid[hidden],#single[hidden]{display:none}
+.cell{border:1px solid var(--bd);border-radius:6px;overflow:hidden}.cell canvas{width:100%;aspect-ratio:4/3;display:block}
+#status{min-height:20px;color:#27506f;padding:2px 4px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:800px){.cols,#grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--bd);border-radius:8px;padding:10px}.card h3{margin:0 0 6px;font-size:14px}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid #dde;padding:3px 7px;text-align:right}th{background:#eef2f6}td:first-child,th:first-child{text-align:left}
+.eq{margin:8px 0 0;font-family:ui-monospace,monospace}textarea{width:100%;height:60px;font:12px ui-monospace,monospace}
+#tip{position:absolute;display:none;background:rgba(20,25,35,.92);color:#fff;padding:6px 9px;border-radius:6px;font-size:12px;pointer-events:none;z-index:9;line-height:1.4}
+</style></head><body>
+<header><h1>Апроксимація функцій: інтерполяція Лагранжа та МНК</h1><small>Лабораторна робота №1 · варіант 10 · JavaScript</small></header>
+<div class="wrap">
+ <div class="bar">
+  <div class="grp"><b>Набір точок:</b><button data-set="5" class="on">5</button><button data-set="10">10</button><button data-set="20">20</button></div>
+  <div class="grp"><b>Показ:</b>
+   <label><input type="radio" name="mode" value="interp"> Інтерполяція</label>
+   <label><input type="radio" name="mode" value="mnk"> МНК</label>
+   <label><input type="radio" name="mode" value="all" checked> Усі</label></div>
+  <div class="grp"><b>Ступінь МНК m:</b><select id="mdeg"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
+  <div class="grp"><b>Анімація:</b><button id="aInterp">▶ Інтерполяція</button><button id="aMnk">▶ МНК</button><button id="aStop">■</button>
+   <label>швидкість <input id="speed" type="range" min=".5" max="3" step=".1" value="1"></label></div>
+  <button id="gridBtn">Сітка 6 графіків</button>
+ </div>
+ <div id="status"></div>
+ <div id="single" class="canv"><canvas id="cv"></canvas><canvas id="rcv"></canvas></div>
+ <div id="grid" class="canv" hidden></div>
+ <div class="cols">
+  <div class="card"><h3>Метрики та рівняння МНК</h3><div id="metrics"></div></div>
+  <div class="card"><h3>Точки, апроксимація, залишки</h3><div id="points"></div></div>
+ </div>
+ <div class="card" style="margin-top:10px"><h3>Власний набір даних (для поточного слота 5/10/20)</h3>
+  <textarea id="pts"></textarea><div class="grp" style="margin-top:6px"><button id="apply">Застосувати</button><button id="reset">Скинути до варіанта</button></div></div>
+</div>
+<div id="tip"></div>
+<script src="js/data.js"></script><script src="js/math.js"></script><script src="js/chart.js"></script><script src="js/app.js"></script>
+</body></html>
